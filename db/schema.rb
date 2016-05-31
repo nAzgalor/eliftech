@@ -13,17 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20160531093235) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.decimal  "price",                      precision: 12, scale: 2
-    t.decimal  "subprice",                   precision: 12, scale: 2
-    t.integer  "parent_id",      limit: 4
-    t.integer  "lft",            limit: 4
-    t.integer  "rgt",            limit: 4
-    t.integer  "depth",          limit: 4
-    t.integer  "children_count", limit: 4
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.string   "name"
+    t.decimal  "price",          precision: 12, scale: 2
+    t.decimal  "subprice",       precision: 12, scale: 2
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.integer  "children_count"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
 end
