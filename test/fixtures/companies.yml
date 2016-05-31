@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  price: 
+  subprice: 
+  parent_id: 
+  lft: 
+  rgt: 1
+
+two:
+  name: 
+  price: 
+  subprice: 
+  parent_id: 
+  lft: 
+  rgt: 1

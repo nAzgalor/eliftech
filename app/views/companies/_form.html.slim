@@ -1,0 +1,28 @@
+= form_for @company, html: {class: 'form-horizontal'} do |f|
+  .col-md-offset-2
+    - if @company.errors.any?
+      #error_explanation style='color: red;'
+        h2 = "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+        ul
+          - @company.errors.full_messages.each do |message|
+            li = message
+
+  .form-group
+    label.control-label.col-sm-2
+      | Name
+      span.text-red &nbsp;*
+    .col-sm-6 = f.text_field :name, required: 'true', class: 'form-control'
+
+  .form-group
+    label.control-label.col-sm-2
+      | Price
+      span.text-red &nbsp;*
+    .col-sm-6 = f.text_field :price, required: 'true', class: 'form-control'
+
+  .form-group
+    label.control-label.col-sm-2 Parent company
+    .col-sm-6 = f.select :parent_id, nested_set_options(Company, @company) {|i| "#{'-' * i.level} #{i.name}" }, {include_blank: true}, { class: 'form-control' }
+
+  .form-group
+    .col-sm-2.col-sm-offset-2 = link_to 'Cancel', companies_path, class: 'btn btn-default btn-block'
+    .col-sm-2 = f.submit value: 'Save', class: 'btn btn-primary btn-block'

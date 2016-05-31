@@ -1,0 +1,20 @@
+// Garment Details
+.modal.fade id="show_#{c.id}" tabindex="-1" role="dialog" aria-labelledby="show_heading"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-label="Close": span aria-hidden="true" &times;
+        h4.modal-title id="show_heading" Detailed Information
+
+      .modal-body: .row
+        dl.dl-horizontal.text-left
+          dt Name:
+          dd = c.name
+
+          dt Price:
+          dd = number_to_currency(c.price, unit: "$")
+          
+          - if c.parent.present?
+            dt Root:
+            dd = c.root.name
+      .modal-footer: button type="button" class="btn btn-default btn-block" data-dismiss="modal" Close
